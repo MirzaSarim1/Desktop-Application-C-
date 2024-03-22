@@ -1,0 +1,44 @@
+CREATE TABLE userlogin (
+    Username VARCHAR2(50),
+    Password VARCHAR2(32)
+);
+
+
+
+INSERT INTO userlogin (Username, Password)
+VALUES ('umar', '482c811da5d5b4bc6d497ffa98491e38');
+
+ALTER TABLE userlogin
+ADD CONSTRAINT PK_your_table PRIMARY KEY (Username);
+
+
+
+
+CREATE TABLE Products(
+    ProductID INT,
+    ProductName varchar2(50),
+    Cost NUMBER(8,2),
+    StockQuantity INT,
+    SupplierID varchar(10),
+    Category varchar2(50),
+    ReorderLevel INT
+);
+
+Create Table Supplier(
+    SupplierID varchar(10) PRIMARY KEY,
+    SupplierName varchar(50),
+    Location varchar(50)
+);
+
+
+ALTER TABLE Products
+ADD CONSTRAINT PK_Products PRIMARY KEY (ProductID);
+
+ALTER TABLE Products
+ADD CONSTRAINT FK_Products_Supplier
+FOREIGN KEY (SupplierID) REFERENCES Supplier(SupplierID);
+
+
+
+Insert INTO Supplier Values('S001','Sarim','Lahore');
+
