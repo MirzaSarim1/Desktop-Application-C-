@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,7 +14,8 @@ namespace Inventory_Management_System
 {
     public partial class Form1 : Form
     {
-        OracleConnection con;
+
+        OracleConnection con; 
         //Functions functionHandler;
         public Form1()
         {
@@ -51,7 +53,9 @@ namespace Inventory_Management_System
                         if (count > 0)
                         {
                             MessageBox.Show("Login");
-                            
+                            Form f2 = new Form2();
+                            this.Hide();
+                            f2.Show();
                         }
                         else
                         {
@@ -65,6 +69,11 @@ namespace Inventory_Management_System
                     MessageBox.Show("Error: " + ex.Message, "Error");
                 }
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

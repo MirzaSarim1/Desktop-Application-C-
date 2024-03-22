@@ -11,3 +11,16 @@ C:\Users\umars\OneDrive\Desktop\Inventory_Management_System\Inventory_Management
 C:\Users\umars\OneDrive\Desktop\Inventory_Management_System\Inventory_Management_System\obj\Debug\Inventory_Management_System.Form1.resources
 C:\Users\umars\OneDrive\Desktop\Inventory_Management_System\Inventory_Management_System\bin\Debug\Oracle.ManagedDataAccess.dll
 C:\Users\umars\OneDrive\Desktop\Inventory_Management_System\Inventory_Management_System\obj\Debug\Inventory_Management_System.csproj.CopyComplete
+C:\Users\mirza\OneDrive\Desktop\Desktop-Application-C-\Inventory_Management_System\bin\Debug\Inventory_Management_System.exe
+C:\Users\mirza\OneDrive\Desktop\Desktop-Application-C-\Inventory_Management_System\bin\Debug\Inventory_Management_System.exe.config
+C:\Users\mirza\OneDrive\Desktop\Desktop-Application-C-\Inventory_Management_System\obj\Debug\Inventory_Management_System.csproj.AssemblyReference.cache
+C:\Users\mirza\OneDrive\Desktop\Desktop-Application-C-\Inventory_Management_System\obj\Debug\Inventory_Management_System.Form1.resources
+C:\Users\mirza\OneDrive\Desktop\Desktop-Application-C-\Inventory_Management_System\obj\Debug\Inventory_Management_System.Form2.resources
+C:\Users\mirza\OneDrive\Desktop\Desktop-Application-C-\Inventory_Management_System\obj\Debug\Inventory_Management_System.Form3.resources
+C:\Users\mirza\OneDrive\Desktop\Desktop-Application-C-\Inventory_Management_System\obj\Debug\Inventory_Management_System.Properties.Resources.resources
+C:\Users\mirza\OneDrive\Desktop\Desktop-Application-C-\Inventory_Management_System\obj\Debug\Inventory_Management_System.csproj.GenerateResource.cache
+C:\Users\mirza\OneDrive\Desktop\Desktop-Application-C-\Inventory_Management_System\obj\Debug\Inventory_Management_System.csproj.CoreCompileInputs.cache
+C:\Users\mirza\OneDrive\Desktop\Desktop-Application-C-\Inventory_Management_System\obj\Debug\Inventory_Management_System.csproj.CopyComplete
+C:\Users\mirza\OneDrive\Desktop\Desktop-Application-C-\Inventory_Management_System\obj\Debug\Inventory_Management_System.exe
+C:\Users\mirza\OneDrive\Desktop\Desktop-Application-C-\Inventory_Management_System\obj\Debug\Inventory_Management_System.pdb
+C:\Users\mirza\OneDrive\Desktop\Desktop-Application-C-\Inventory_Management_System\bin\Debug\Inventory_Management_System.pdb

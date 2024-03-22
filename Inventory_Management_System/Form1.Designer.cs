@@ -87,6 +87,7 @@
             this.label3.Size = new System.Drawing.Size(352, 45);
             this.label3.TabIndex = 4;
             this.label3.Text = "Enter Login Details";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button1
             // 
