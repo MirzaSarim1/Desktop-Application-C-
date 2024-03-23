@@ -17,17 +17,19 @@ namespace Inventory_Management_System
     {
         private static int id;
         public List<Product> Products;
-
+        public List<Supplier> Suppliers;
         public Form3()
         {
             InitializeComponent();
             Products = new List<Product>();
+            Suppliers = new List<Supplier>();
         }
 
-        public Form3(List<Product> Products)
+        public Form3(List<Product> Products, List<Supplier> Suppliers)
         {
             InitializeComponent();
             this.Products = Products;
+            this.Suppliers = Suppliers;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -197,7 +199,7 @@ namespace Inventory_Management_System
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form f2 = new Form2(Products);
+            Form f2 = new Form2(Products,Suppliers);
             f2.Show();
         }
     }

@@ -62,6 +62,12 @@ namespace Inventory_Management_System
                 grid.Rows.Add(Products[i].get_ID(), Products[i].get_Name(), Products[i].get_cost(), Products[i].get_StockQuantity(), Products[i].get_SupplierID(), Products[i].get_Category(), Products[i].get_ReorderLevel());
             }
         }
-
+        public static void add_data_to_grid_supp(List<Supplier> suppliers, DataGridView grid)
+        {
+            for (int i = 0; i < suppliers.Count(); i++)
+            {
+                grid.Rows.Add(suppliers[i].get_Id(), suppliers[i].get_Name(), suppliers[i].get_location());
+            }
+        }
     }
 }

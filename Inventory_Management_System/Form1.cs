@@ -16,12 +16,17 @@ namespace Inventory_Management_System
     {
 
         OracleConnection con;
-        Product Products_var;
+        Product Products_var = new Product();
+        Supplier Suppliers_var = new Supplier();
+
         //Functions functionHandler;
+        public List<Product> Products;
+        public List<Supplier> Suppliers;
         public Form1()
         {
             InitializeComponent();
-            Products_var = new Product();
+            Products = new List<Product>();
+            Suppliers = new List<Supplier>();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -55,8 +60,9 @@ namespace Inventory_Management_System
                         if (count > 0)
                         {
                             List<Product> Products = Products_var.LoadProducts();
+                            List<Supplier> Suppliers = Suppliers_var.LoadSuppliers();
                             MessageBox.Show("Login");
-                            Form f2 = new Form2(Products);
+                            Form f2 = new Form2(Products,Suppliers);
                             this.Hide();
                             f2.Show();
                         }

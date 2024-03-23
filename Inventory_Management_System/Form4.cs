@@ -13,17 +13,19 @@ namespace Inventory_Management_System
     public partial class Form4 : Form
     {
         public List<Product> Products;
-
+        public List<Supplier> Suppliers;
         public Form4()
         {
             InitializeComponent();
             Products = new List<Product>();
+            Suppliers = new List<Supplier>();
         }
 
-        public Form4(List<Product> Products)
+        public Form4(List<Product> Products, List<Supplier> Suppliers)
         {
             InitializeComponent();
             this.Products = Products;
+            this.Suppliers = Suppliers;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -34,7 +36,7 @@ namespace Inventory_Management_System
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form f2 = new Form2(Products);
+            Form f2 = new Form2(Products,Suppliers);
             f2.Show();
         }
 

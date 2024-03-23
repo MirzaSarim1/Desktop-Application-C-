@@ -13,17 +13,19 @@ namespace Inventory_Management_System
     public partial class Form2 : Form
     {
         public List<Product> Products;
-
+        public List<Supplier> Suppliers;
         public Form2()
         {
             InitializeComponent();
             Products = new List<Product>();
+            Suppliers = new List<Supplier>();
         }
 
-        public Form2(List<Product> Products)
+        public Form2(List<Product> Products,List<Supplier> Suppliers)
         {
             InitializeComponent();
             this.Products = Products;
+            this.Suppliers = Suppliers;
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -34,7 +36,7 @@ namespace Inventory_Management_System
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form f3 = new Form3(Products);
+            Form f3 = new Form3(Products,Suppliers);
             f3.Show();
         }
 
@@ -46,15 +48,29 @@ namespace Inventory_Management_System
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form f4 = new Form4(Products);
+            Form f4 = new Form4(Products, Suppliers);
             f4.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form f5 = new Form5(Products);
+            Form f5 = new Form5(Products, Suppliers);
             f5.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form f6 = new Form6(Products, Suppliers);
+            f6.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form f7 = new Form7(Products,Suppliers);
+            f7.Show();
         }
     }
 }
