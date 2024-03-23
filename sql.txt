@@ -24,6 +24,8 @@ CREATE TABLE Products(
     ReorderLevel INT
 );
 
+CREATE UNIQUE INDEX UQ_ProductName ON Products(ProductName);
+
 Create Table Supplier(
     SupplierID varchar(10) PRIMARY KEY,
     SupplierName varchar(50),
@@ -41,4 +43,45 @@ FOREIGN KEY (SupplierID) REFERENCES Supplier(SupplierID);
 
 
 Insert INTO Supplier Values('S001','Sarim','Lahore');
+Insert INTO Supplier Values('S002','Ali','Faisalabad');
+Insert INTO Supplier Values('S003','Saad','Lahore');
+
+
+
+
+INSERT INTO Products (ProductID, ProductName, Cost, StockQuantity, SupplierID, Category, ReorderLevel) 
+VALUES (1, 'Drip Coffee Maker', 39.99, 90, 'S001', 'Kitchen Appliances', 15);
+
+INSERT INTO Products (ProductID, ProductName, Cost, StockQuantity, SupplierID, Category, ReorderLevel) 
+VALUES (2, 'Bluetooth Speaker', 59.99, 120, 'S002', 'Electronics', 20);
+
+INSERT INTO Products (ProductID,ProductName, Cost, StockQuantity, SupplierID, Category, ReorderLevel) 
+VALUES (3,'High-Speed Blender', 79.99, 100, 'S001', 'Kitchen Appliances', 20);
+
+INSERT INTO Products (ProductID,ProductName, Cost, StockQuantity, SupplierID, Category, ReorderLevel) 
+VALUES (4,'Wireless Headphones', 129.99, 75, 'S002', 'Electronics', 15);
+
+INSERT INTO Products (ProductID,ProductName, Cost, StockQuantity, SupplierID, Category, ReorderLevel) 
+VALUES (5,'Stainless Steel Water Bottle', 19.99, 200, 'S003', 'Outdoor Gear', 30);
+
+INSERT INTO Products (ProductID,ProductName, Cost, StockQuantity, SupplierID, Category, ReorderLevel) 
+VALUES (6,'Memory Foam Pillow', 29.99, 50, 'S001', 'Home Goods', 10);
+
+INSERT INTO Products (ProductID,ProductName, Cost, StockQuantity, SupplierID, Category, ReorderLevel) 
+VALUES (7,'Smartphone Case', 14.99, 120, 'S002', 'Accessories', 25);
+
+INSERT INTO Products (ProductID,ProductName, Cost, StockQuantity, SupplierID, Category, ReorderLevel) 
+VALUES (8,'Portable Power Bank', 39.99, 90, 'S003', 'Gadgets', 20);
+
+INSERT INTO Products (ProductID,ProductName, Cost, StockQuantity, SupplierID, Category, ReorderLevel) 
+VALUES (9,'Resistance Bands Set', 24.99, 150, 'S001', 'Fitness', 35);
+
+INSERT INTO Products (ProductID,ProductName, Cost, StockQuantity, SupplierID, Category, ReorderLevel) 
+VALUES (10,'Ceramic Mug Set', 19.99, 40, 'S002', 'Kitchenware', 12);
+
+INSERT INTO Products (ProductID,ProductName, Cost, StockQuantity, SupplierID, Category, ReorderLevel) 
+VALUES (11,'Travel Backpack', 49.99, 80, 'S003', 'Luggage', 30);
+
+INSERT INTO Products (ProductID,ProductName, Cost, StockQuantity, SupplierID, Category, ReorderLevel) 
+VALUES (12,'Wireless Mouse', 29.99, 60, 'S001', 'Computer Accessories', 18);
 

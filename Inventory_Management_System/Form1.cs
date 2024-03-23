@@ -15,11 +15,13 @@ namespace Inventory_Management_System
     public partial class Form1 : Form
     {
 
-        OracleConnection con; 
+        OracleConnection con;
+        Product Products_var;
         //Functions functionHandler;
         public Form1()
         {
             InitializeComponent();
+            Products_var = new Product();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -52,8 +54,9 @@ namespace Inventory_Management_System
                         con.Close();
                         if (count > 0)
                         {
+                            List<Product> Products = Products_var.LoadProducts();
                             MessageBox.Show("Login");
-                            Form f2 = new Form2();
+                            Form f2 = new Form2(Products);
                             this.Hide();
                             f2.Show();
                         }

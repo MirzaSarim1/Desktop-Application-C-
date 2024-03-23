@@ -1,0 +1,8 @@
+
+
+
+
+
+product database mei random order mei add hu rahy jaha display ker wany hu assending ki query sath laga dai
+
+--SELECT * FROM Products ORDER BY ProductID ASC;
