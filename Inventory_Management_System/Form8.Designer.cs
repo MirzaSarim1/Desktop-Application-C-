@@ -28,19 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Product_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Product_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stock_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Supplier_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Reorder_Level = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
+            this.Supplier_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Supplier_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.location = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,13 +93,10 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Product_ID,
-            this.Product_Name,
-            this.Cost,
-            this.Stock_Quantity,
             this.Supplier_ID,
-            this.Category,
-            this.Reorder_Level});
+            this.Supplier_Name,
+            this.location,
+            this.Delete});
             this.dataGridView1.Location = new System.Drawing.Point(45, 154);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -109,55 +104,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(994, 406);
             this.dataGridView1.TabIndex = 24;
-            // 
-            // Product_ID
-            // 
-            this.Product_ID.HeaderText = "Product ID";
-            this.Product_ID.MinimumWidth = 6;
-            this.Product_ID.Name = "Product_ID";
-            this.Product_ID.ReadOnly = true;
-            // 
-            // Product_Name
-            // 
-            this.Product_Name.HeaderText = "Product Name";
-            this.Product_Name.MinimumWidth = 6;
-            this.Product_Name.Name = "Product_Name";
-            this.Product_Name.ReadOnly = true;
-            // 
-            // Cost
-            // 
-            this.Cost.HeaderText = "Cost";
-            this.Cost.MinimumWidth = 6;
-            this.Cost.Name = "Cost";
-            this.Cost.ReadOnly = true;
-            // 
-            // Stock_Quantity
-            // 
-            this.Stock_Quantity.HeaderText = "Stock Quantity";
-            this.Stock_Quantity.MinimumWidth = 6;
-            this.Stock_Quantity.Name = "Stock_Quantity";
-            this.Stock_Quantity.ReadOnly = true;
-            // 
-            // Supplier_ID
-            // 
-            this.Supplier_ID.HeaderText = "Supplier ID";
-            this.Supplier_ID.MinimumWidth = 6;
-            this.Supplier_ID.Name = "Supplier_ID";
-            this.Supplier_ID.ReadOnly = true;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.MinimumWidth = 6;
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            // 
-            // Reorder_Level
-            // 
-            this.Reorder_Level.HeaderText = "Reorder Level";
-            this.Reorder_Level.MinimumWidth = 6;
-            this.Reorder_Level.Name = "Reorder_Level";
-            this.Reorder_Level.ReadOnly = true;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label2
             // 
@@ -169,6 +116,41 @@
             this.label2.Size = new System.Drawing.Size(282, 45);
             this.label2.TabIndex = 23;
             this.label2.Text = "Delete Supplier";
+            // 
+            // Supplier_ID
+            // 
+            this.Supplier_ID.HeaderText = "Supplier ID";
+            this.Supplier_ID.MinimumWidth = 6;
+            this.Supplier_ID.Name = "Supplier_ID";
+            this.Supplier_ID.ReadOnly = true;
+            // 
+            // Supplier_Name
+            // 
+            this.Supplier_Name.HeaderText = "Supplier Name";
+            this.Supplier_Name.MinimumWidth = 6;
+            this.Supplier_Name.Name = "Supplier_Name";
+            this.Supplier_Name.ReadOnly = true;
+            // 
+            // location
+            // 
+            this.location.HeaderText = "Location";
+            this.location.MinimumWidth = 6;
+            this.location.Name = "location";
+            this.location.ReadOnly = true;
+            // 
+            // Delete
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Delete.HeaderText = "Delete";
+            this.Delete.MinimumWidth = 6;
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Text = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // Form8
             // 
@@ -183,6 +165,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Name = "Form8";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form8";
             this.Load += new System.EventHandler(this.Form8_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -198,13 +181,10 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Product_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Product_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stock_Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Supplier_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Reorder_Level;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Supplier_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Supplier_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn location;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
     }
 }

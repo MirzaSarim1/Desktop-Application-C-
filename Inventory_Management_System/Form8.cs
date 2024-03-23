@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,36 +31,28 @@ namespace Inventory_Management_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<Product> SearchedProducts = new List<Product>();
+
+            List<Supplier> SearchedSupplier = new List<Supplier>();
             string search = textBox1.Text;
-            int search_reorder = -1;
-            bool number = false;
-            if (int.TryParse(textBox1.Text, out search_reorder))
-            {
-                // if user enter any number it assign to search_reorder we use it to compare with Reorder_Level
-                number = true;
-            }
+            //int search_reorder = -1;
+
             //int search_count = 0;
 
 
-            for (int i = 0; i < Products.Count(); i++)
+            for (int i = 0; i < Suppliers.Count(); i++)
             {
-                if (search == Products[i].get_Name() || search == Products[i].get_Category() || search == Products[i].get_SupplierID())
+                if (search == Suppliers[i].get_Id())
                 {
-                    SearchedProducts.Add(Products[i]);
-                }
-                else if (number && search_reorder == Products[i].get_ReorderLevel())
-                {
-                    SearchedProducts.Add(Products[i]);
+                    SearchedSupplier.Add(Suppliers[i]);
                 }
             }
             dataGridView1.Rows.Clear();
-            Functions.add_data_to_grid(SearchedProducts, dataGridView1);
+            Functions.add_data_to_grid_supp(SearchedSupplier, dataGridView1);
         }
 
         private void Form8_Load(object sender, EventArgs e)
         {
-
+            Functions.add_data_to_grid_supp(Suppliers, dataGridView1);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -67,6 +60,71 @@ namespace Inventory_Management_System
             this.Hide();
             Form f2 = new Form2(Products, Suppliers);
             f2.Show();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 1)
+            {
+
+                string connectionString = @"DATA SOURCE = localhost:1521/XE; USER ID=Inventory_System; PASSWORD=12345";
+                using (OracleConnection con = new OracleConnection(connectionString))
+                {
+                    try
+                    {
+                        con.Open();
+                        DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                        if (MessageBox.Show(string.Format("Do you Want to Delete This Row?", row.Cells["Supplier_ID"].Value), "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            string sqlQuery = "Select Count(*) From Products Where SupplierID = :ID";
+                            using (OracleCommand cmd = new OracleCommand(sqlQuery, con))
+                            {
+                                int count;
+                                cmd.Parameters.Add("ID", OracleDbType.Varchar2).Value = row.Cells["Supplier_ID"].Value;
+                                count = Convert.ToInt32(cmd.ExecuteScalar());
+                                if(count > 0)
+                                {
+                                    string sqlQuery2 = "UPDATE Products SET SupplierID = NULL WHERE SupplierID = :suppid";
+                                    using (OracleCommand cmd1 = new OracleCommand(sqlQuery2, con))
+                                    {
+                                        cmd1.Parameters.Add("suppid", OracleDbType.Varchar2).Value = row.Cells["Supplier_ID"].Value;
+
+                                        cmd1.ExecuteNonQuery();
+                                        con.Close();
+
+                                    }
+                                }
+                                con.Close();
+
+                            }
+                            con.Open();
+                            string sqlQuery1 = "Delete FROM Supplier WHERE SupplierID = :ID ";
+                            using (OracleCommand cmd = new OracleCommand(sqlQuery1, con))
+                            {
+                                cmd.Parameters.Add("ID", OracleDbType.Varchar2).Value =  row.Cells["Supplier_ID"].Value;
+
+                                cmd.ExecuteNonQuery();
+                                dataGridView1.Rows.RemoveAt(e.RowIndex);
+                                Suppliers.RemoveAt(e.RowIndex);
+                                con.Close();
+
+                            }
+                        }
+
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message, "Error");
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("You can not Delete An Empty Row!");
+            }
         }
     }
 }
