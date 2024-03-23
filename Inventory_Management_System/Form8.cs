@@ -10,39 +10,22 @@ using System.Windows.Forms;
 
 namespace Inventory_Management_System
 {
-    public partial class Form4 : Form
+    public partial class Form8 : Form
     {
         public List<Product> Products;
         public List<Supplier> Suppliers;
-        public Form4()
+        public Form8()
         {
             InitializeComponent();
             Products = new List<Product>();
             Suppliers = new List<Supplier>();
         }
 
-        public Form4(List<Product> Products, List<Supplier> Suppliers)
+        public Form8(List<Product> Products, List<Supplier> Suppliers)
         {
             InitializeComponent();
             this.Products = Products;
             this.Suppliers = Suppliers;
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Form f2 = new Form2(Products,Suppliers);
-            f2.Show();
-        }
-
-        private void Form4_Load(object sender, EventArgs e)
-        {
-            Functions.add_data_to_grid(Products, dataGridView1);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -74,19 +57,16 @@ namespace Inventory_Management_System
             Functions.add_data_to_grid(SearchedProducts, dataGridView1);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void Form8_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
+            this.Hide();
+            Form f2 = new Form2(Products, Suppliers);
+            f2.Show();
         }
     }
 }
