@@ -51,9 +51,9 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(40, 90);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 25);
+            this.label1.Size = new System.Drawing.Size(190, 25);
             this.label1.TabIndex = 28;
-            this.label1.Text = "Enter Product ID";
+            this.label1.Text = "Enter Supplier ID";
             // 
             // button1
             // 
@@ -166,9 +166,9 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(417, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(272, 45);
+            this.label2.Size = new System.Drawing.Size(282, 45);
             this.label2.TabIndex = 23;
-            this.label2.Text = "Delete Product";
+            this.label2.Text = "Delete Supplier";
             // 
             // Form8
             // 
