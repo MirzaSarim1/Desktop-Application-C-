@@ -79,5 +79,12 @@ namespace Inventory_Management_System
             Form f8 = new Form8(Products, Suppliers);
             f8.Show();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form f9 = new Form9(Products, Suppliers);
+            f9.Show();
+        }
     }
 }

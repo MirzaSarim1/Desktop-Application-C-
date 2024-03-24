@@ -80,6 +80,21 @@ namespace Inventory_Management_System
             suppliers.RemoveAll(supplier => supplier.get_Id() == id);
         }
 
+        public static void UpdateProductById(List<Product> products, Product product, int id)
+        {
+            for (int i = 0; i< products.Count(); i++)
+            {
+                if (products[i].get_ID() == id)
+                {
+                    products[i].set_Name(product.get_Name());
+                    products[i].set_cost(product.get_cost());
+                    products[i].set_Category(product.get_Category());
+                    products[i].set_StockQuantity(product.get_StockQuantity());
+                    products[i].set_ReorderLevel(product.get_ReorderLevel());
+                    products[i].set_SupplierID(product.get_SupplierID());
+                }
+            }
+        }
 
     }
 }
