@@ -51,9 +51,9 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(362, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(379, 32);
+            this.label1.Size = new System.Drawing.Size(363, 32);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Enter Details Of The Produnct";
+            this.label1.Text = "Enter Details Of The Product";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2

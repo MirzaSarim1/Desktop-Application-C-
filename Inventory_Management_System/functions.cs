@@ -69,5 +69,17 @@ namespace Inventory_Management_System
                 grid.Rows.Add(suppliers[i].get_Id(), suppliers[i].get_Name(), suppliers[i].get_location());
             }
         }
+
+        public static void RemoveProductById(List<Product> products, int id)
+        {
+            products.RemoveAll(product => product.get_ID() == id);
+        }
+
+        public static void RemoveSupplierById(List<Supplier> suppliers, string id)
+        {
+            suppliers.RemoveAll(supplier => supplier.get_Id() == id);
+        }
+
+
     }
 }

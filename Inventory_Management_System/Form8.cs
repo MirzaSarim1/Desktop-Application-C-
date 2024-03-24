@@ -5,8 +5,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace Inventory_Management_System
@@ -64,7 +66,7 @@ namespace Inventory_Management_System
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows.Count > 1)
+            if (dataGridView1.Rows.Count > 0)
             {
 
                 string connectionString = @"DATA SOURCE = localhost:1521/XE; USER ID=Inventory_System; PASSWORD=12345";
@@ -84,7 +86,7 @@ namespace Inventory_Management_System
                                 count = Convert.ToInt32(cmd.ExecuteScalar());
                                 if(count > 0)
                                 {
-                                    string sqlQuery2 = "UPDATE Products SET SupplierID = NULL WHERE SupplierID = :suppid";
+                                    string sqlQuery2 = "UPDATE Products SET SupplierID = '' WHERE SupplierID = :suppid";
                                     using (OracleCommand cmd1 = new OracleCommand(sqlQuery2, con))
                                     {
                                         cmd1.Parameters.Add("suppid", OracleDbType.Varchar2).Value = row.Cells["Supplier_ID"].Value;
@@ -99,15 +101,24 @@ namespace Inventory_Management_System
                             }
                             con.Open();
                             string sqlQuery1 = "Delete FROM Supplier WHERE SupplierID = :ID ";
+                            string Supplier_id = (string)row.Cells["Supplier_ID"].Value;
+                            // In upper line saving value before delete to pass to function whiich clear 
+                            // SupplierID from List
                             using (OracleCommand cmd = new OracleCommand(sqlQuery1, con))
                             {
+                                
                                 cmd.Parameters.Add("ID", OracleDbType.Varchar2).Value =  row.Cells["Supplier_ID"].Value;
 
                                 cmd.ExecuteNonQuery();
                                 dataGridView1.Rows.RemoveAt(e.RowIndex);
-                                Suppliers.RemoveAt(e.RowIndex);
                                 con.Close();
+                            }
 
+                            Functions.RemoveSupplierById(Suppliers, Supplier_id);
+                            
+                            for (int i=0;i<Products.Count();i++)
+                            {
+                                Products[i].ClearSupplierID(Supplier_id);//Deleting from list
                             }
                         }
 
@@ -125,6 +136,7 @@ namespace Inventory_Management_System
             {
                 MessageBox.Show("You can not Delete An Empty Row!");
             }
+
         }
     }
 }

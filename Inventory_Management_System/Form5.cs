@@ -63,7 +63,7 @@ namespace Inventory_Management_System
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows.Count > 1)
+            if (dataGridView1.Rows.Count > 0)
             {
                
                 string connectionString = @"DATA SOURCE = localhost:1521/XE; USER ID=Inventory_System; PASSWORD=12345";
@@ -76,16 +76,19 @@ namespace Inventory_Management_System
                         if(MessageBox.Show(string.Format("Do you Want to Delete This Row?" , row.Cells["Product_ID"].Value), "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             string sqlQuery = "Delete FROM Products WHERE ProductID = :ID ";
+
+                            int id = (int)row.Cells["Product_ID"].Value;
+
                             using (OracleCommand cmd = new OracleCommand(sqlQuery, con))
                             {
                                 cmd.Parameters.Add("ID", OracleDbType.Varchar2).Value = row.Cells["Product_ID"].Value;
 
                                 cmd.ExecuteNonQuery();
                                 dataGridView1.Rows.RemoveAt(e.RowIndex);
-                                Products.RemoveAt(e.RowIndex);
                                 con.Close();
 
                             }
+                            Functions.RemoveProductById(Products,id);
                         }
                         
 

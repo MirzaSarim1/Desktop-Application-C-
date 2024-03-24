@@ -33,7 +33,7 @@ namespace Inventory_Management_System
 
         public
             string get_SupplierID()
-        { return SupplierID; }
+        {   return SupplierID; }
 
         public
             string get_Category()
@@ -113,7 +113,15 @@ namespace Inventory_Management_System
                                 product.Name = reader.GetString(reader.GetOrdinal("ProductName"));
                                 product.cost = reader.GetDouble(reader.GetOrdinal("Cost"));
                                 product.StockQuantity = reader.GetInt32(reader.GetOrdinal("StockQuantity"));
-                                product.SupplierID = reader.GetString(reader.GetOrdinal("SupplierID"));
+                                int supplierIDOrdinal = reader.GetOrdinal("SupplierID");
+                                if (!reader.IsDBNull(supplierIDOrdinal))
+                                {
+                                    product.SupplierID = reader.GetString(supplierIDOrdinal);
+                                }
+                                else
+                                {
+                                    product.SupplierID = string.Empty; // or any other appropriate value for null supplier IDs
+                                }
                                 product.Category = reader.GetString(reader.GetOrdinal("Category"));
                                 product.ReorderLevel = reader.GetInt32(reader.GetOrdinal("ReorderLevel"));
 
@@ -130,5 +138,14 @@ namespace Inventory_Management_System
 
             return products;
         }
+        public void ClearSupplierID(string supplierID)
+        {
+            if(this.SupplierID == supplierID)
+            {
+                this.SupplierID = "";
+            }
+        }
+
+
     }
 }
