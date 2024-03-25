@@ -99,38 +99,63 @@ namespace Inventory_Management_System
             Products_var.set_ID(id);
             Products_var.set_Name(name.Text);
             Products_var.set_cost(Convert.ToDouble(textBox2.Text));
-            Products_var.set_SupplierID(textBox4.Text);
+            if (Functions.SupplierExists(textBox4.Text))
+            {
+                Products_var.set_SupplierID(textBox4.Text);
+            }
+            else
+            {
+                MessageBox.Show("Supplier ID not exist");
+                return;
+            }
             Products_var.set_StockQuantity(Convert.ToInt32(textBox3.Text));
             Products_var.set_Category(textBox5.Text);
             Products_var.set_ReorderLevel(Convert.ToInt32(textBox6.Text));
 
-
-
-            //MessageBox.Show(Convert.ToString(Products_var.get_ReorderLevel()));
             string connectionString = @"DATA SOURCE = localhost:1521/XE; USER ID=Inventory_System; PASSWORD=12345";
+
             using (OracleConnection con = new OracleConnection(connectionString))
             {
                 try
                 {
-                    string sqlQuery = "UPDATE Products SET ProductName = :name, Cost = :cost, StockQuantity = :quantity, ReorderLevel = :reorderlevel, Category = :Category, SupplierID = :supp_id WHERE ProductID = :id";
+                    string sqlQuery = @"
+                UPDATE Products 
+                SET ProductName = :name, 
+                    Cost = :cost, 
+                    StockQuantity = :quantity, 
+                    ReorderLevel = :reorderlevel, 
+                    Category = :category, 
+                    SupplierID = :supplierid 
+                WHERE ProductID = :id";
 
                     using (OracleCommand cmd = new OracleCommand(sqlQuery, con))
                     {
-                        con.Open();
+                        // Set parameters
                         cmd.Parameters.Add("name", OracleDbType.Varchar2).Value = Products_var.get_Name();
                         cmd.Parameters.Add("cost", OracleDbType.Double).Value = Products_var.get_cost();
                         cmd.Parameters.Add("quantity", OracleDbType.Int32).Value = Products_var.get_StockQuantity();
-                        cmd.Parameters.Add("id", OracleDbType.Int32).Value = Products_var.get_ID();
-                        cmd.Parameters.Add("supp_id", OracleDbType.Varchar2).Value = Products_var.get_SupplierID();
                         cmd.Parameters.Add("reorderlevel", OracleDbType.Int32).Value = Products_var.get_ReorderLevel();
-                        cmd.Parameters.Add("Category", OracleDbType.Varchar2).Value = Products_var.get_Category();
-                        cmd.ExecuteNonQuery();
-                        Functions.UpdateProductById(Products, Products_var, Products_var.get_ID());
-                        dataGridView1.Rows.Clear();
-                        Functions.add_data_to_grid(Products, dataGridView1);
+                        cmd.Parameters.Add("category", OracleDbType.Varchar2).Value = Products_var.get_Category();
+                        cmd.Parameters.Add("supplierid", OracleDbType.Varchar2).Value = Products_var.get_SupplierID();
+                        cmd.Parameters.Add("id", OracleDbType.Int32).Value = Products_var.get_ID();
 
-                        MessageBox.Show("Product Details Updated Successfully!");
-                        con.Close();
+                        con.Open();
+
+                        // Execute the update query
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            // Optionally, perform additional actions upon successful update
+                            Functions.UpdateProductById(Products, Products_var, id);
+                            dataGridView1.Rows.Clear();
+                            Functions.add_data_to_grid(Products, dataGridView1);
+                            MessageBox.Show("Product Details Updated Successfully!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No product found with the specified ID.", "Error");
+                        }
                     }
                 }
                 catch (Exception ex)
