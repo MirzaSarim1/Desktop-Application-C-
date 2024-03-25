@@ -96,5 +96,10 @@ namespace Inventory_Management_System
             }
         }
 
+        public static void Purchase_item(Purchase item, DataGridView grid)
+        {
+            grid.Rows.Add(item.get_ID(),item.get_Name(),item.get_cost(),item.get_Quantity(),item.get_Per_Item_Cost());
+        }
+
     }
 }
