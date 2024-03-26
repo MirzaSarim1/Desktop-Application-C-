@@ -62,7 +62,7 @@ namespace Inventory_Management_System
             else
             {
                 int id = -1;
-                if (textBox1 == null)
+                if (textBox1 != null)
                 {
                     id = Convert.ToInt32(textBox1.Text);
                 }

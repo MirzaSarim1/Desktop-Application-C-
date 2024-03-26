@@ -32,6 +32,10 @@ Create Table Supplier(
     Location varchar(50)
 );
 
+ALTER TABLE Supplier
+ADD Password VARCHAR2(50);
+
+
 
 ALTER TABLE Products
 ADD CONSTRAINT PK_Products PRIMARY KEY (ProductID);
@@ -41,10 +45,10 @@ ADD CONSTRAINT FK_Products_Supplier
 FOREIGN KEY (SupplierID) REFERENCES Supplier(SupplierID);
 
 
-
-Insert INTO Supplier Values('S001','Sarim','Lahore');
-Insert INTO Supplier Values('S002','Ali','Faisalabad');
-Insert INTO Supplier Values('S003','Saad','Lahore');
+-- Passwords are their names
+Insert INTO Supplier Values('S001','Sarim','Lahore','923a2e5990cac95a6675080cc88e5cb3');
+Insert INTO Supplier Values('S002','Ali','Faisalabad','7a9b46ab6d983a85dd4d9a1aa64a3945');
+Insert INTO Supplier Values('S003','Saad','Lahore','6eb062bec73a97c02fd4ad6bd0964046');
 
 
 
@@ -84,4 +88,43 @@ VALUES (11,'Travel Backpack', 49.99, 80, 'S003', 'Luggage', 30);
 
 INSERT INTO Products (ProductID,ProductName, Cost, StockQuantity, SupplierID, Category, ReorderLevel) 
 VALUES (12,'Wireless Mouse', 29.99, 60, 'S001', 'Computer Accessories', 18);
+
+
+
+
+CREATE TABLE SupplierProducts (
+    SupplierID VARCHAR(10),
+    ProductID INT,
+    CONSTRAINT fk_SupplierID FOREIGN KEY (SupplierID) REFERENCES Supplier(SupplierID),
+    CONSTRAINT fk_ProductID FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
+    PRIMARY KEY (SupplierID)
+);
+
+
+--select * from SupplierProducts
+
+CREATE OR REPLACE TRIGGER CheckReorderLevel
+AFTER UPDATE OF StockQuantity ON Products
+FOR EACH ROW
+DECLARE
+    v_Count INTEGER;
+BEGIN
+    IF :NEW.StockQuantity < :NEW.ReorderLevel THEN
+        -- Check if the SupplierProducts entry already exists
+        SELECT COUNT(*)
+        INTO v_Count
+        FROM SupplierProducts
+        WHERE SupplierID = :NEW.SupplierID AND ProductID = :NEW.ProductID;
+
+        -- If the entry doesn't exist, insert it
+        IF v_Count = 0 THEN
+            INSERT INTO SupplierProducts (SupplierID, ProductID) VALUES (:NEW.SupplierID, :NEW.ProductID);
+        END IF;
+    END IF;
+END;
+/
+
+
+
+
 

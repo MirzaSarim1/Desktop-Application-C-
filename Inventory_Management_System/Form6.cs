@@ -80,12 +80,13 @@ namespace Inventory_Management_System
                 string id = textBox1.Text;
                 string name = textBox2.Text;
                 string location = textBox3.Text;
+                string password = Functions.Md5Encry(textBox4.Text);
 
                 try
                 {
                     con.Open();
-                    string sqlQueryInsert = "INSERT INTO Supplier (SupplierID, SupplierName, Location) " +
-                        "VALUES (:Supp_id, :Supp_Name, :Location)";
+                    string sqlQueryInsert = "INSERT INTO Supplier (SupplierID, SupplierName, Location, Password) " +
+                        "VALUES (:Supp_id, :Supp_Name, :Location, :Password)";
 
                     using (OracleCommand cmd = new OracleCommand(sqlQueryInsert, con))
                     {
@@ -93,6 +94,7 @@ namespace Inventory_Management_System
                         cmd.Parameters.Add("Supp_id", OracleDbType.Varchar2).Value = id; 
                         cmd.Parameters.Add("Supp_Name", OracleDbType.Varchar2).Value = name;
                         cmd.Parameters.Add("Location", OracleDbType.Varchar2).Value = location;
+                        cmd.Parameters.Add("Password", OracleDbType.Varchar2).Value = password;
 
                         cmd.ExecuteNonQuery(); // Execute the query
 
