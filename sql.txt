@@ -100,6 +100,8 @@ CREATE TABLE SupplierProducts (
     PRIMARY KEY (SupplierID)
 );
 
+Alter Table SupplierProducts 
+Drop Primary Key
 
 --select * from SupplierProducts
 

@@ -115,7 +115,8 @@ namespace Inventory_Management_System
                             {
                                 supplierid = enteredUsername;
                                 MessageBox.Show("Login");
-                                Form f11 = new Form11(supplierid);
+                                List<Product> Products = Products_var.LoadProducts();
+                                Form f11 = new Form11(supplierid, Products);
                                 this.Hide();
                                 f11.Show();
                             }

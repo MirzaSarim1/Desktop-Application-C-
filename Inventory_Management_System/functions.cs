@@ -106,5 +106,27 @@ namespace Inventory_Management_System
             purchased_product.set_StockQuantity(stock);
         }
 
+        public static void add_data_to_grid_order(List <Order> Orders , string SuppID, DataGridView grid)
+        {
+            for (int i = 0; i < Orders.Count(); i++)
+            {
+                if (Orders[i].get_Sid() == SuppID)
+                {
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(grid);
+                    row.Cells[0].Value = Orders[i].get_PId();
+
+                    DataGridViewButtonCell buttonCell1 = new DataGridViewButtonCell();
+                    buttonCell1.Value = "Accept";
+                    row.Cells[1] = buttonCell1;
+
+                    DataGridViewButtonCell buttonCell2 = new DataGridViewButtonCell();
+                    buttonCell2.Value = "Decline";
+                    row.Cells[2] = buttonCell2;
+
+                    grid.Rows.Add(row);
+                }
+            }
+        }
     }
 }
