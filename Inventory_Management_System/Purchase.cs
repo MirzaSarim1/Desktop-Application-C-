@@ -8,7 +8,7 @@ namespace Inventory_Management_System
 {
     internal class Purchase
     {
-        int ID, Quantity;
+        int ID, Quantity, P_id;
         string Name;
         Double cost, Per_Item_Cost;
 
@@ -17,6 +17,7 @@ namespace Inventory_Management_System
         {
             Name = string.Empty;
             ID = 0;
+            P_id = 0;
             Quantity = 0;
             cost = 0.0;
             Per_Item_Cost = 0.0;
@@ -30,6 +31,10 @@ namespace Inventory_Management_System
 
         public
             int get_ID()
+        { return ID; }
+
+        public
+        int get_P_id()
         { return ID; }
 
         public
@@ -53,6 +58,11 @@ namespace Inventory_Management_System
 
         public
             void set_ID(int ID)
+        { this.ID = ID; }
+
+
+        public
+            void set_P_ID(int ID)
         { this.ID = ID; }
 
         public

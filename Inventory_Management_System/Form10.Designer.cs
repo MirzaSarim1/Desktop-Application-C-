@@ -32,6 +32,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Product_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Product_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Purchase_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Per_item_cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -41,11 +46,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Product_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Product_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Purchase_Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Per_item_cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -92,6 +92,41 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(677, 414);
             this.dataGridView1.TabIndex = 25;
+            // 
+            // Product_No
+            // 
+            this.Product_No.HeaderText = "Product No";
+            this.Product_No.MinimumWidth = 6;
+            this.Product_No.Name = "Product_No";
+            this.Product_No.ReadOnly = true;
+            // 
+            // Product_Name
+            // 
+            this.Product_Name.HeaderText = "Product Name";
+            this.Product_Name.MinimumWidth = 6;
+            this.Product_Name.Name = "Product_Name";
+            this.Product_Name.ReadOnly = true;
+            // 
+            // Cost
+            // 
+            this.Cost.HeaderText = "Cost";
+            this.Cost.MinimumWidth = 6;
+            this.Cost.Name = "Cost";
+            this.Cost.ReadOnly = true;
+            // 
+            // Purchase_Quantity
+            // 
+            this.Purchase_Quantity.HeaderText = "Purchase Quantity";
+            this.Purchase_Quantity.MinimumWidth = 6;
+            this.Purchase_Quantity.Name = "Purchase_Quantity";
+            this.Purchase_Quantity.ReadOnly = true;
+            // 
+            // Per_item_cost
+            // 
+            this.Per_item_cost.HeaderText = "Per Item Cost";
+            this.Per_item_cost.MinimumWidth = 6;
+            this.Per_item_cost.Name = "Per_item_cost";
+            this.Per_item_cost.ReadOnly = true;
             // 
             // textBox2
             // 
@@ -188,48 +223,13 @@
             this.label5.TabIndex = 41;
             this.label5.Text = "0";
             // 
-            // Product_No
-            // 
-            this.Product_No.HeaderText = "Product No";
-            this.Product_No.MinimumWidth = 6;
-            this.Product_No.Name = "Product_No";
-            this.Product_No.ReadOnly = true;
-            // 
-            // Product_Name
-            // 
-            this.Product_Name.HeaderText = "Product Name";
-            this.Product_Name.MinimumWidth = 6;
-            this.Product_Name.Name = "Product_Name";
-            this.Product_Name.ReadOnly = true;
-            // 
-            // Cost
-            // 
-            this.Cost.HeaderText = "Cost";
-            this.Cost.MinimumWidth = 6;
-            this.Cost.Name = "Cost";
-            this.Cost.ReadOnly = true;
-            // 
-            // Purchase_Quantity
-            // 
-            this.Purchase_Quantity.HeaderText = "Purchase Quantity";
-            this.Purchase_Quantity.MinimumWidth = 6;
-            this.Purchase_Quantity.Name = "Purchase_Quantity";
-            this.Purchase_Quantity.ReadOnly = true;
-            // 
-            // Per_item_cost
-            // 
-            this.Per_item_cost.HeaderText = "Per Item Cost";
-            this.Per_item_cost.MinimumWidth = 6;
-            this.Per_item_cost.Name = "Per_item_cost";
-            this.Per_item_cost.ReadOnly = true;
-            // 
             // button3
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(672, 575);
+            this.button3.Location = new System.Drawing.Point(672, 563);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(205, 51);
+            this.button3.Size = new System.Drawing.Size(268, 73);
             this.button3.TabIndex = 42;
             this.button3.Text = "Finish Purchasing";
             this.button3.UseVisualStyleBackColor = true;

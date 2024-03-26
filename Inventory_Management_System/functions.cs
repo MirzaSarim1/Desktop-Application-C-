@@ -101,5 +101,10 @@ namespace Inventory_Management_System
             grid.Rows.Add(item.get_ID(),item.get_Name(),item.get_cost(),item.get_Quantity(),item.get_Per_Item_Cost());
         }
 
+        public static void Update_Stocks(Product purchased_product, int stock)
+        {
+            purchased_product.set_StockQuantity(stock);
+        }
+
     }
 }
